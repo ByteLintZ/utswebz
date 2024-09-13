@@ -10,6 +10,8 @@ interface Testimonial {
   text: string;
 }
 
+
+
 const testimonials: Testimonial[] = [
   {
     name: "Chealsea Morgan",
@@ -32,7 +34,6 @@ const testimonials: Testimonial[] = [
     image: "lana.png",
     text: "Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Pellentesque vulputate quam a quam volutpat.",
   },
-  // Additional dummy data
   {
     name: "John Doe",
     role: "Lead Developer",
@@ -85,13 +86,16 @@ const Carousel: React.FC = () => {
     setIsDragging(false);
   }, []);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging || !carouselRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 1; // Adjust scrolling speed (higher value for faster scroll)
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  }, [isDragging, startX, scrollLeft]);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!isDragging || !carouselRef.current) return;
+      e.preventDefault();
+      const x = e.pageX - carouselRef.current.offsetLeft;
+      const walk = (x - startX) * 1; // Adjust scrolling speed (higher value for faster scroll)
+      carouselRef.current.scrollLeft = scrollLeft - walk;
+    },
+    [isDragging, startX, scrollLeft]
+  );
 
   const handleWheel = useCallback((e: React.WheelEvent) => {
     if (carouselRef.current) {
@@ -103,7 +107,7 @@ const Carousel: React.FC = () => {
 
   return (
     <div
-      className="carousel flex space-x-4 overflow-hidden cursor-grab w-full bg-slate-50 pb-32"
+      className="carousel flex space-x-4 overflow-hidden cursor-grab w-full bg-slate-50 dark:bg-gray-900 pb-32"
       ref={carouselRef}
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeave}
@@ -114,7 +118,7 @@ const Carousel: React.FC = () => {
     >
       {testimonials.map((testimonial, index) => (
         <div key={index} className="carousel-item flex-shrink-0 p-4">
-          <div className="max-w-sm bg-white shadow-lg rounded-lg border border-gray-200 p-6">
+          <div className="max-w-sm bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
             <div className="text-yellow-500 flex space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <svg
@@ -128,7 +132,9 @@ const Carousel: React.FC = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-600" style={{ userSelect: 'none' }}>{testimonial.text}</p>
+            <p className="text-gray-600 dark:text-gray-300" style={{ userSelect: 'none' }}>
+              {testimonial.text}
+            </p>
             <div className="flex items-center mt-4">
               <img
                 className="w-10 h-10 object-cover rounded-full"
@@ -136,8 +142,12 @@ const Carousel: React.FC = () => {
                 alt={testimonial.name}
               />
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900" style={{ userSelect: 'none' }}>{testimonial.name}</h3>
-                <p className="text-sm text-gray-500" style={{ userSelect: 'none' }}>{testimonial.role} at {testimonial.company}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100" style={{ userSelect: 'none' }}>
+                  {testimonial.name}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400" style={{ userSelect: 'none' }}>
+                  {testimonial.role} at {testimonial.company}
+                </p>
               </div>
             </div>
           </div>

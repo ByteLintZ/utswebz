@@ -3,7 +3,7 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 const FooterSection = () => {
   return (
-    <footer className="footerSection bg-gray-900 text-white py-16">
+    <footer className="footerSection bg-sky-950 dark:bg-black text-white py-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand Section */}
         <div>
