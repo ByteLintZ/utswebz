@@ -14,13 +14,14 @@ const HeroSection = () => {
         />
       </div>
       <div className="relative container mx-auto h-full flex flex-col justify-center items-start p-5">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight" style={{ lineHeight: '1.5' }}>
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-blue-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
           Instant collaboration <br /> for remote teams
         </h1>
-        <p className="pb-8 mt-4 max-w-lg text-lg sm:text-xl lg:text-2xl" style={{ lineHeight: '1.5' }}>
+        <p className="pb-8 mt-4 max-w-lg text-lg sm:text-xl lg:text-2xl ">
           All-in-one place for your remote team to chat, collaborate and track
           project progress.
         </p>
+
         <form className="mt-8 flex flex-col sm:flex-row gap-4">
           <div className="relative w-full sm:w-auto">
             <input
